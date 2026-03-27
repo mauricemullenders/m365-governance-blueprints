@@ -1,0 +1,37 @@
+[
+  {
+    "id": "t1",
+    "name": "Require CostCenter Tag",
+    "description": "Dwingt af dat elke resource een CostCenter tag heeft voor facturatie.",
+    "logicalOperator": "allOf",
+    "parameters": [],
+    "conditions": [{"field": "tags[CostCenter]", "operator": "exists", "value": "false"}],
+    "thenEffect": "Deny"
+  },
+  {
+    "id": "t2",
+    "name": "Enforce Department for Active Users",
+    "description": "Detecteert M365 gebruikers zonder afdeling.",
+    "logicalOperator": "allOf",
+    "parameters": [],
+    "conditions": [
+      {"field": "type", "operator": "equals", "value": "Microsoft.Graph/users"},
+      {"field": "tags[AccountEnabled]", "operator": "equals", "value": "true"},
+      {"field": "tags[Department]", "operator": "equals", "value": "None"}
+    ],
+    "thenEffect": "Audit"
+  },
+  {
+    "id": "t3",
+    "name": "Require MFA for Administrators",
+    "description": "Controleert of bevoorrechte accounts MFA hebben ingeschakeld.",
+    "logicalOperator": "allOf",
+    "parameters": [],
+    "conditions": [
+      {"field": "type", "operator": "equals", "value": "Microsoft.Graph/users"},
+      {"field": "tags[isAdmin]", "operator": "equals", "value": "true"},
+      {"field": "tags[isMFAEnabled]", "operator": "equals", "value": "false"}
+    ],
+    "thenEffect": "Audit"
+  }
+]
