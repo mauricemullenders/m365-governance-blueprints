@@ -23,7 +23,7 @@
   },
   {
     "id": "t3",
-    "name": "Require MFA for Administrators",
+    "name": "Require MFA for AdministratorsVersion2",
     "description": "Controleert of bevoorrechte accounts MFA hebben ingeschakeld.",
     "logicalOperator": "allOf",
     "parameters": [],
