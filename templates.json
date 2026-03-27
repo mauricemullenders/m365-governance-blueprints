@@ -1,7 +1,7 @@
 [
   {
     "id": "t1",
-    "name": "Require CostCenter Tag",
+    "name": "Check voor CostCenter Tag (Test)",
     "description": "Dwingt af dat elke resource een CostCenter tag heeft voor facturatie.",
     "logicalOperator": "allOf",
     "parameters": [],
